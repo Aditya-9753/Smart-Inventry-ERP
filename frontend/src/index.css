@@ -1,0 +1,52 @@
+/**
+ * MAIN ENTRY POINT
+ * Imports all modular stylesheets in proper order
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modular Styles */
+@import './styles/globals.css';
+@import './styles/dashboard.css';
+@import './styles/inventory.css';
+
+/* Custom Utilities */
+@layer utilities {
+  .font-inherit {
+    font-family: inherit;
+  }
+
+  .text-inherit {
+    color: inherit;
+  }
+
+  .app-sticky {
+    @apply sticky top-0 z-50;
+  }
+
+  .center-flex {
+    @apply flex items-center justify-center;
+  }
+
+  .center-flex-col {
+    @apply flex flex-col items-center justify-center;
+  }
+}
+
+/* Code Styling */
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}

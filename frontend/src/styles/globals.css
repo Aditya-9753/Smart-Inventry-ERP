@@ -1,0 +1,208 @@
+/**
+ * GLOBAL STYLES
+ * Typography, focus states, scrollbars, and layout foundation
+ */
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply bg-neutral-0 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 transition-colors duration-200;
+  }
+
+  #root {
+    @apply min-h-screen flex flex-col;
+  }
+
+  /* Typography System */
+  h1 {
+    @apply text-5xl font-bold leading-tight tracking-tight text-neutral-950 dark:text-neutral-0;
+  }
+
+  h2 {
+    @apply text-4xl font-bold leading-snug tracking-tight text-neutral-950 dark:text-neutral-0;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold leading-snug tracking-tight text-neutral-900 dark:text-neutral-100;
+  }
+
+  h4 {
+    @apply text-xl font-semibold leading-normal tracking-tight text-neutral-900 dark:text-neutral-100;
+  }
+
+  h5 {
+    @apply text-lg font-semibold leading-normal text-neutral-900 dark:text-neutral-100;
+  }
+
+  h6 {
+    @apply text-base font-semibold leading-normal text-neutral-900 dark:text-neutral-100;
+  }
+
+  p {
+    @apply leading-relaxed text-neutral-600 dark:text-neutral-400;
+  }
+
+  /* Typography Helpers */
+  small {
+    @apply text-sm text-neutral-600 dark:text-neutral-400;
+  }
+
+  strong {
+    @apply font-semibold text-neutral-900 dark:text-neutral-50;
+  }
+
+  /* Link Styles */
+  a {
+    @apply text-brand-600 dark:text-brand-400 font-medium hover:text-brand-700 dark:hover:text-brand-300 transition-colors duration-100;
+  }
+
+  a:focus-visible {
+    @apply outline-none ring-2 ring-offset-2 ring-brand-500 dark:ring-offset-neutral-900 rounded-sm;
+  }
+
+  /* Code Styles */
+  code,
+  pre {
+    @apply bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 font-mono text-sm;
+  }
+
+  code {
+    @apply px-2 py-0.5 rounded;
+  }
+
+  pre {
+    @apply p-3 rounded-md overflow-x-auto;
+  }
+
+  /* Horizontal Rules */
+  hr {
+    @apply border-t border-neutral-200 dark:border-neutral-700;
+  }
+
+  /* List Styles */
+  ul,
+  ol {
+    @apply space-y-2;
+  }
+
+  li {
+    @apply text-neutral-700 dark:text-neutral-300;
+  }
+
+  /* Form Reset */
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Focus Visible States */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500 dark:focus-visible:ring-offset-neutral-900;
+  }
+
+  .focus-ring-inset {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500;
+  }
+
+  /* Text Utilities */
+  .truncate-1 {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  .truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Dividers */
+  .divider-h {
+    @apply h-px bg-neutral-200 dark:bg-neutral-700;
+  }
+
+  .divider-v {
+    @apply w-px bg-neutral-200 dark:bg-neutral-700;
+  }
+
+  /* Badge Background Colors */
+  .badge-base {
+    @apply inline-flex items-center px-2 py-1 rounded text-xs font-medium gap-1;
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  /* Flex Utilities */
+  .center-flex {
+    @apply flex items-center justify-center;
+  }
+
+  .center-flex-col {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  /* Grid Helpers */
+  .grid-auto {
+    @apply grid gap-4 auto-rows-max;
+  }
+
+  /* Surface Layers */
+  .surface-base {
+    @apply bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg;
+  }
+
+  .surface-raised {
+    @apply bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg;
+  }
+
+  .surface-sunken {
+    @apply bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-lg;
+  }
+
+  /* Overlay Backdrop */
+  .overlay-backdrop {
+    @apply fixed inset-0 bg-black/50 dark:bg-black/70 transition-opacity duration-200;
+  }
+
+  /* Responsive Text Sizing */
+  @screen md {
+    h1 {
+      @apply text-6xl;
+    }
+
+    h2 {
+      @apply text-5xl;
+    }
+  }
+
+  /* Accessibility: Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}

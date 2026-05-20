@@ -1,0 +1,259 @@
+/**
+ * DASHBOARD STYLES
+ * Analytics grids, stat widgets, card layouts, and metrics
+ */
+
+@layer components {
+  /* Dashboard Grid Layouts */
+  .dashboard-grid {
+    @apply grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .dashboard-grid-2col {
+    @apply grid gap-6 grid-cols-1 md:grid-cols-2;
+  }
+
+  .dashboard-grid-3col {
+    @apply grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .dashboard-grid-full {
+    @apply grid gap-6 grid-cols-1;
+  }
+
+  /* Stat Card Container */
+  .stat-card {
+    @apply surface-base hover:shadow-card transition-smooth p-5 flex flex-col gap-3;
+  }
+
+  .stat-card-highlighted {
+    @apply stat-card ring-2 ring-brand-500/20 dark:ring-brand-400/30;
+  }
+
+  .stat-card-danger {
+    @apply surface-base hover:shadow-card transition-smooth p-5 flex flex-col gap-3 ring-2 ring-status-critical-500/20;
+  }
+
+  .stat-card-warning {
+    @apply surface-base hover:shadow-card transition-smooth p-5 flex flex-col gap-3 ring-2 ring-status-warning-500/20;
+  }
+
+  .stat-card-success {
+    @apply surface-base hover:shadow-card transition-smooth p-5 flex flex-col gap-3 ring-2 ring-status-success-500/20;
+  }
+
+  /* Stat Label */
+  .stat-label {
+    @apply text-sm font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wider;
+  }
+
+  /* Stat Value */
+  .stat-value {
+    @apply text-3xl font-bold text-neutral-950 dark:text-neutral-0 font-mono;
+  }
+
+  .stat-value-sm {
+    @apply text-2xl font-bold text-neutral-900 dark:text-neutral-100 font-mono;
+  }
+
+  .stat-value-lg {
+    @apply text-4xl font-bold text-neutral-950 dark:text-neutral-0 font-mono;
+  }
+
+  /* Stat Change Indicator */
+  .stat-change {
+    @apply flex items-center gap-1.5 text-sm font-medium;
+  }
+
+  .stat-change-up {
+    @apply text-status-success-600 dark:text-status-success-400;
+  }
+
+  .stat-change-down {
+    @apply text-status-critical-600 dark:text-status-critical-400;
+  }
+
+  .stat-change-neutral {
+    @apply text-neutral-600 dark:text-neutral-400;
+  }
+
+  /* Analytics Card Section */
+  .analytics-section {
+    @apply surface-base p-6 rounded-lg;
+  }
+
+  .analytics-section-title {
+    @apply text-lg font-bold text-neutral-950 dark:text-neutral-0 mb-6 flex items-center justify-between;
+  }
+
+  /* Chart Container */
+  .chart-container {
+    @apply w-full h-80 flex items-center justify-center bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-700;
+  }
+
+  .chart-loading {
+    @apply animate-pulse;
+  }
+
+  /* Metric Widget */
+  .metric-widget {
+    @apply flex items-center gap-4 p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700;
+  }
+
+  .metric-icon {
+    @apply flex items-center justify-center w-12 h-12 rounded-lg bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400;
+  }
+
+  .metric-icon-success {
+    @apply flex items-center justify-center w-12 h-12 rounded-lg bg-status-success-100 dark:bg-status-success-900/30 text-status-success-600 dark:text-status-success-400;
+  }
+
+  .metric-icon-warning {
+    @apply flex items-center justify-center w-12 h-12 rounded-lg bg-status-warning-100 dark:bg-status-warning-900/30 text-status-warning-600 dark:text-status-warning-400;
+  }
+
+  .metric-icon-critical {
+    @apply flex items-center justify-center w-12 h-12 rounded-lg bg-status-critical-100 dark:bg-status-critical-900/30 text-status-critical-600 dark:text-status-critical-400;
+  }
+
+  .metric-content {
+    @apply flex-1;
+  }
+
+  .metric-label {
+    @apply text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wider;
+  }
+
+  .metric-value {
+    @apply text-2xl font-bold text-neutral-900 dark:text-neutral-50 font-mono mt-1;
+  }
+
+  .metric-change {
+    @apply text-xs font-medium mt-1;
+  }
+
+  /* Top-level Dashboard Layout */
+  .dashboard-container {
+    @apply max-w-7xl mx-auto w-full;
+  }
+
+  .dashboard-header {
+    @apply flex flex-col gap-1 mb-8;
+  }
+
+  .dashboard-header-title {
+    @apply text-3xl font-bold text-neutral-950 dark:text-neutral-0;
+  }
+
+  .dashboard-header-subtitle {
+    @apply text-neutral-600 dark:text-neutral-400;
+  }
+
+  /* Summary Cards Grid (KPI Row) */
+  .summary-cards {
+    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8;
+  }
+
+  /* Key Metric Banner */
+  .metric-banner {
+    @apply bg-gradient-to-r from-brand-50 to-brand-100 dark:from-brand-900/20 dark:to-brand-900/10 border border-brand-200 dark:border-brand-800 rounded-lg p-6;
+  }
+
+  .metric-banner-critical {
+    @apply bg-gradient-to-r from-status-critical-50 to-status-critical-100 dark:from-status-critical-900/20 dark:to-status-critical-900/10 border border-status-critical-200 dark:border-status-critical-800;
+  }
+
+  .metric-banner-warning {
+    @apply bg-gradient-to-r from-status-warning-50 to-status-warning-100 dark:from-status-warning-900/20 dark:to-status-warning-900/10 border border-status-warning-200 dark:border-status-warning-800;
+  }
+
+  .metric-banner-success {
+    @apply bg-gradient-to-r from-status-success-50 to-status-success-100 dark:from-status-success-900/20 dark:to-status-success-900/10 border border-status-success-200 dark:border-status-success-800;
+  }
+
+  /* Time Period Selector */
+  .time-period-selector {
+    @apply flex items-center gap-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg p-1;
+  }
+
+  .time-period-btn {
+    @apply px-3 py-1.5 text-xs font-medium rounded-md transition-colors duration-150;
+  }
+
+  .time-period-btn-active {
+    @apply bg-neutral-0 dark:bg-neutral-700 text-neutral-950 dark:text-neutral-0 shadow-sm;
+  }
+
+  .time-period-btn-inactive {
+    @apply text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100;
+  }
+
+  /* Comparison Indicator */
+  .comparison-indicator {
+    @apply text-xs font-medium flex items-center gap-1;
+  }
+
+  .comparison-up {
+    @apply text-status-success-600 dark:text-status-success-400;
+  }
+
+  .comparison-down {
+    @apply text-status-critical-600 dark:text-status-critical-400;
+  }
+
+  .comparison-neutral {
+    @apply text-neutral-600 dark:text-neutral-400;
+  }
+
+  /* Loading State for Cards */
+  .stat-card-loading {
+    @apply space-y-4;
+  }
+
+  .stat-card-loading > div {
+    @apply h-4 bg-neutral-200 dark:bg-neutral-700 rounded animate-pulse-soft;
+  }
+
+  /* Empty State for Charts */
+  .chart-empty {
+    @apply flex flex-col items-center justify-center h-80 text-neutral-500 dark:text-neutral-400 gap-3;
+  }
+
+  /* Chart Legend */
+  .chart-legend {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-4;
+  }
+
+  .chart-legend-item {
+    @apply flex items-center gap-2 text-xs;
+  }
+
+  .chart-legend-color {
+    @apply w-3 h-3 rounded-full flex-shrink-0;
+  }
+
+  /* Responsive Adjustments */
+  @screen sm {
+    .stat-card {
+      @apply p-6;
+    }
+
+    .analytics-section {
+      @apply p-8;
+    }
+
+    .chart-container {
+      @apply h-96;
+    }
+  }
+
+  @screen md {
+    .summary-cards {
+      @apply gap-6;
+    }
+
+    .dashboard-grid {
+      @apply gap-8;
+    }
+  }
+}
