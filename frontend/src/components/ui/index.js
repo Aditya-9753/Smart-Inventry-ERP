@@ -14,3 +14,5 @@ export { default as EmptyState } from './EmptyState';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Card, CardHeader, CardBody, CardFooter } from './Card';
 export { default as Tabs } from './Tabs';
+export { default as PageHeader } from './PageHeader';
+

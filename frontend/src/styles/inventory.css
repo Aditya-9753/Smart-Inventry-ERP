@@ -19,11 +19,15 @@
   }
 
   .table-responsive th {
-    @apply px-4 py-3 text-left text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider whitespace-nowrap sticky top-0 bg-neutral-50 dark:bg-neutral-900;
+    @apply px-4 py-3 text-left text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider whitespace-nowrap bg-neutral-50 dark:bg-neutral-900;
+    position: sticky;
+    top: 0;
   }
 
   .table-responsive th.sticky {
-    @apply sticky top-0 z-10;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 
   /* Table Body */
@@ -278,9 +282,11 @@
     @apply flex items-center gap-2;
   }
 
-  /* Sticky Table Header (on scroll) */
   .table-sticky-header {
-    @apply sticky top-0 z-20 bg-neutral-50 dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700;
+    @apply bg-neutral-50 dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700;
+    position: sticky;
+    top: 0;
+    z-index: 20;
   }
 
   /* Responsive Breakpoints */

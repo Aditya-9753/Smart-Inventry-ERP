@@ -1,280 +1,399 @@
-# 🏭 Smart Inventory ERP
+<div align="center">
 
-A production-grade, full-stack **Enterprise Resource Planning** system for inventory management, built with FastAPI, React, MongoDB, and Redis.
+<img src="frontend/public/favicon.svg" alt="Smart Inventory ERP" width="90" height="90" />
+
+# Smart Inventory ERP
+
+### Enterprise-ready inventory management platform built with FastAPI, React, Redis, and Docker.
+
+Designed for real-time stock tracking, warehouse operations, analytics, and scalable deployment.
+
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-7.2-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+Live Demo — Coming Soon
+
+</div>
 
 ---
 
-## 📐 Tech Stack
+# 💡 Problem Statement
+
+Traditional inventory systems often lack real-time stock visibility, scalable backend architecture, and proper role-based access control.
+
+Smart Inventory ERP solves this by providing:
+
+- Real-time inventory tracking
+- Warehouse-level stock management
+- Secure JWT authentication
+- Real-time notifications
+- Analytics and reporting dashboard
+- Scalable Dockerized architecture
+
+---
+
+# 📸 Screenshots
+
+<div align="center">
+
+| Dashboard | Inventory | Analytics |
+|:-:|:-:|:-:|
+| ![](docs/screenshots/dashboard.png) | ![](docs/screenshots/inventory.png) | ![](docs/screenshots/analytics.png) |
+
+</div>
+
+---
+
+# 🏛️ System Architecture
+
+```text
+Frontend (React + Vite)
+        │
+        ▼
+Nginx Reverse Proxy
+        │
+        ▼
+FastAPI Backend
+   │        │
+   ▼        ▼
+MongoDB   Redis
+   │
+   ▼
+WebSocket + APScheduler
+```
+
+---
+
+# ✨ Key Features
+
+## 📦 Inventory Management
+
+- Stock inward, outward, and warehouse transfer
+- Auto-generated SKU, Barcode, and QR codes
+- Real-time low-stock alerts
+- Inventory transaction history
+- Atomic stock validation system
+
+---
+
+## 🔐 Authentication & Security
+
+- JWT authentication with refresh tokens
+- Redis token blacklist
+- Role-based access control (RBAC)
+- Protected frontend routes and APIs
+- Password reset via email token
+
+---
+
+## 📊 Analytics & Reporting
+
+- Inventory trend analytics
+- Fast-moving and dead-stock detection
+- PDF, Excel, and CSV report exports
+- User activity tracking
+- Warehouse-level reporting
+
+---
+
+## 🌐 Real-Time System
+
+- WebSocket-based live updates
+- Real-time notifications
+- Dashboard auto-refresh
+- Auto-reconnect support
+
+---
+
+## ⚙️ Infrastructure & DevOps
+
+- Dockerized multi-service architecture
+- Nginx reverse proxy
+- APScheduler background jobs
+- Environment-based configuration
+- Async FastAPI backend
+- Redis-backed session handling
+
+---
+
+# 🏆 Project Highlights
+
+- Built scalable FastAPI backend using async architecture
+- Implemented Redis-based JWT blacklist authentication
+- Designed real-time inventory updates using WebSockets
+- Dockerized complete development environment
+- Added RBAC authorization with protected frontend routes
+- Generated PDF/Excel reports dynamically
+- Integrated APScheduler for automation jobs
+- Structured modular backend architecture
+
+---
+
+# 🏗️ Tech Stack
 
 | Layer | Technology |
-|-------|------------|
-| **Backend** | Python 3.11, FastAPI, Beanie ODM, Motor |
-| **Database** | MongoDB 7.0 |
-| **Cache / Sessions** | Redis 7.2 |
-| **Frontend** | React 19, Vite, Redux Toolkit, Tailwind CSS |
-| **Auth** | JWT (access + refresh), bcrypt, Redis blacklist |
-| **Charts** | Recharts |
-| **Reports** | ReportLab (PDF), openpyxl (Excel), csv |
-| **WebSockets** | Native FastAPI WebSocket + browser WebSocket |
-| **Scheduler** | APScheduler |
-| **Container** | Docker Compose + Nginx |
-| **Tests** | pytest-asyncio, httpx AsyncClient |
+|------|-------------|
+| Backend | FastAPI · Python 3.11 · Beanie ODM |
+| Frontend | React 19 · Vite · Redux Toolkit |
+| Database | MongoDB |
+| Cache | Redis |
+| Authentication | JWT · Redis Blacklist |
+| Real-time | WebSockets |
+| Styling | Tailwind CSS · Radix UI |
+| Charts | Recharts |
+| Reports | ReportLab · openpyxl |
+| Scheduler | APScheduler |
+| Containerization | Docker Compose |
+| Reverse Proxy | Nginx |
+| Testing | pytest · pytest-asyncio |
 
 ---
 
-## 🗂️ Project Structure
+# 📁 Project Structure
 
-```
-Smart Inventory ERP/
+```text
+smart-inventory-erp/
+│
 ├── backend/
 │   ├── app/
-│   │   ├── auth/           # JWT, login, refresh, logout
-│   │   ├── users/          # User CRUD, roles, permissions
-│   │   ├── products/       # Product & category management
-│   │   ├── inventory/      # Inward / outward / transfer engine
-│   │   ├── warehouses/     # Warehouse CRUD + per-warehouse stock
-│   │   ├── dashboard/      # Stats aggregation
-│   │   ├── analytics/      # Trends, fast-moving, dead-stock
-│   │   ├── reports/        # PDF / Excel / CSV generation
-│   │   ├── notifications/  # In-app notifications
-│   │   ├── websocket/      # Real-time WS channels
-│   │   ├── audit/          # Audit logs
-│   │   ├── settings/       # System settings KV store
-│   │   ├── tasks/          # APScheduler background tasks
-│   │   ├── core/           # RBAC, JWT, security helpers
-│   │   ├── database/       # Beanie init, connection
-│   │   ├── utils/          # SKU, barcode, pagination helpers
-│   │   └── tests/          # pytest test suite
-│   ├── Dockerfile
+│   │   ├── auth/
+│   │   ├── users/
+│   │   ├── products/
+│   │   ├── inventory/
+│   │   ├── warehouses/
+│   │   ├── dashboard/
+│   │   ├── analytics/
+│   │   ├── reports/
+│   │   ├── websocket/
+│   │   ├── notifications/
+│   │   ├── middleware/
+│   │   ├── core/
+│   │   └── tests/
+│   │
 │   ├── requirements.txt
-│   ├── pyproject.toml
-│   └── .env.example
+│   └── Dockerfile
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── api/            # Axios instance, endpoints, interceptors
-│   │   ├── app/            # Redux store
-│   │   ├── components/     # Reusable UI components
-│   │   ├── context/        # AuthContext, ThemeContext, WebSocketContext
-│   │   ├── hooks/          # Custom hooks (useInventory, useNotifications…)
-│   │   ├── layouts/        # Role-specific layouts
-│   │   ├── pages/          # admin/, manager/, staff/, viewer/, auth/
-│   │   ├── redux/          # All slice files
-│   │   ├── routes/         # AppRoutes + role guards
-│   │   ├── services/       # API service layer
-│   │   └── utils/          # localStorage, exportHelpers
-│   ├── Dockerfile
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   └── layouts/
+│   │
 │   ├── package.json
-│   └── .env.example
+│   └── Dockerfile
 │
 ├── nginx/
-│   └── nginx.conf          # Reverse proxy + WS + rate limiting
-│
-└── docker-compose.yml      # Full 5-service orchestration
+├── docker-compose.yml
+└── README.md
 ```
 
 ---
 
-## 🚀 Quick Start
+# 🚀 Getting Started
 
-### Prerequisites
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Docker Compose](https://docs.docker.com/compose/) (bundled with Docker Desktop)
+## Prerequisites
 
-### 1. Clone & Configure
+- Docker Desktop
+- Git
+
+---
+
+## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/yourorg/smart-inventory-erp.git
+git clone https://github.com/Aditya-9753/smart-inventory-erp.git
 cd smart-inventory-erp
+```
 
-# Backend environment
+---
+
+## 2️⃣ Configure Environment Variables
+
+```bash
 cp backend/.env.example backend/.env
-
-# Frontend environment
 cp frontend/.env.example frontend/.env
 ```
 
-Edit `backend/.env` with your real values — especially:
-- `SECRET_KEY` — change to a random 32+ character string
-- `SMTP_USER` / `SMTP_PASSWORD` — for email alerts (optional)
+Update backend `.env`:
 
-### 2. Start All Services
+```env
+SECRET_KEY=your-secret-key
+MONGODB_URL=mongodb://mongo:27017
+REDIS_URL=redis://redis:6379
+EMAILS_ENABLED=false
+```
+
+---
+
+## 3️⃣ Start Application
 
 ```bash
 docker-compose up --build
 ```
 
+---
+
+## 4️⃣ Access Application
+
 | Service | URL |
-|---------|-----|
-| App (via Nginx) | http://localhost |
-| Frontend direct | http://localhost:3000 |
+|------|------|
+| Frontend | http://localhost |
 | Backend API | http://localhost:8000 |
-| API Docs (Swagger) | http://localhost:8000/docs |
-| API Docs (ReDoc) | http://localhost:8000/redoc |
-
-### 3. View Logs
-
-```bash
-# All services
-docker-compose logs -f
-
-# Backend only
-docker-compose logs -f backend
-
-# Nginx access log
-docker-compose exec nginx tail -f /var/log/nginx/access.log
-```
-
-### 4. Stop Services
-
-```bash
-docker-compose down            # Stop containers
-docker-compose down -v         # Stop + delete volumes (⚠️ destroys data)
-```
+| Swagger Docs | http://localhost:8000/docs |
+| ReDoc | http://localhost:8000/redoc |
 
 ---
 
-## 🧪 Running Tests
+# 🔐 Roles & Permissions
+
+| Role | Access |
+|------|---------|
+| ADMIN | Full system access |
+| MANAGER | Inventory + Analytics |
+| STAFF | Inventory operations |
+| VIEWER | Read-only access |
+
+---
+
+# 🌐 API Reference
+
+## Authentication
+
+| Method | Endpoint |
+|------|------------|
+| POST | `/auth/register` |
+| POST | `/auth/login` |
+| POST | `/auth/refresh` |
+| POST | `/auth/logout` |
+
+---
+
+## Products
+
+| Method | Endpoint |
+|------|------------|
+| GET | `/products` |
+| POST | `/products` |
+| PUT | `/products/{id}` |
+| DELETE | `/products/{id}` |
+
+---
+
+## Inventory
+
+| Method | Endpoint |
+|------|------------|
+| POST | `/inventory/inward` |
+| POST | `/inventory/outward` |
+| POST | `/inventory/transfer` |
+| GET | `/inventory/history` |
+| GET | `/inventory/low-stock` |
+
+---
+
+## Analytics
+
+| Method | Endpoint |
+|------|------------|
+| GET | `/analytics/trends` |
+| GET | `/analytics/fast-moving` |
+| GET | `/analytics/dead-stock` |
+
+---
+
+# 🧪 Running Tests
 
 ```bash
-# Enter the backend container
 docker-compose exec backend bash
-
-# Run all tests
 pytest app/tests/ -v
-
-# Run with coverage report
-pytest app/tests/ --cov=app --cov-report=html
-
-# Run a specific test file
-pytest app/tests/test_auth.py -v
-
-# Run a specific test class
-pytest app/tests/test_products.py::TestProductCreate -v
 ```
 
-Or run locally (without Docker):
+Coverage:
 
 ```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-pip install pytest-asyncio pytest-cov
-
-pytest app/tests/ -v
+pytest app/tests/ --cov=app --cov-report=html
 ```
 
 ---
 
-## 🔐 Default Roles & Permissions
+# 🔧 Environment Variables
 
-| Role | Products | Inventory | Warehouses | Analytics | Reports | Users | Settings | Audit |
-|------|----------|-----------|------------|-----------|---------|-------|----------|-------|
-| **ADMIN** | ✅ CRUD | ✅ All | ✅ CRUD | ✅ | ✅ | ✅ CRUD | ✅ | ✅ |
-| **MANAGER** | ✅ CRUD | ✅ All | ✅ View | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **STAFF** | 👁 Read | ✅ In/Out | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **VIEWER** | 👁 Read | 👁 Read | ❌ | ❌ | 👁 Read | ❌ | ❌ | ❌ |
+## Backend
 
----
-
-## 🌐 API Reference
-
-All endpoints follow the pattern: `http://localhost/api/{resource}`
-
-### Auth
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/login` | Login with email + password |
-| POST | `/api/auth/register` | Register new user |
-| POST | `/api/auth/refresh` | Refresh access token |
-| POST | `/api/auth/logout` | Logout (blacklist token) |
-| POST | `/api/auth/forgot-password` | Send reset email |
-| POST | `/api/auth/reset-password` | Reset with token |
-
-### Products
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/products` | List (search, filter, paginate) |
-| POST | `/api/products` | Create with auto-SKU + barcode |
-| GET | `/api/products/{id}` | Get single product |
-| PUT | `/api/products/{id}` | Update product |
-| DELETE | `/api/products/{id}` | Delete product |
-
-### Inventory
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/inventory/inward` | Receive stock |
-| POST | `/api/inventory/outward` | Ship/consume stock |
-| POST | `/api/inventory/transfer` | Transfer between warehouses |
-| GET | `/api/inventory/history` | Transaction history |
-| GET | `/api/inventory/low-stock` | Products below min stock |
-
-### Reports (streamed binary downloads)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/reports/pdf?type=sales` | PDF report |
-| GET | `/api/reports/excel?type=inventory` | Excel report |
-| GET | `/api/reports/csv?type=warehouse` | CSV report |
-
-### WebSockets
-| Channel | URL | Description |
-|---------|-----|-------------|
-| Inventory | `ws://localhost/ws/inventory` | Stock update events |
-| Dashboard | `ws://localhost/ws/dashboard` | Live stats updates |
-| Notifications | `ws://localhost/ws/notifications?token=<jwt>` | Personal push notifications |
+| Variable | Description |
+|------|-------------|
+| MONGODB_URL | MongoDB connection |
+| REDIS_URL | Redis connection |
+| SECRET_KEY | JWT secret |
+| ACCESS_TOKEN_EXPIRE_MINUTES | Access token expiry |
+| REFRESH_TOKEN_EXPIRE_DAYS | Refresh token expiry |
 
 ---
 
-## 📋 Frontend QA Checklist
+## Frontend
 
-- [x] Dark / light theme toggle — persists across sessions via `localStorage`
-- [x] Token refresh happens silently on 401 — user stays logged in
-- [x] Toast notifications on every create / update / delete
-- [x] `usePermissions()` hides action buttons for unauthorised roles
-- [x] WebSocket reconnects on disconnect
-- [x] `Unauthorized.jsx` shown when wrong-role user accesses a guarded route
-- [x] Pagination on all tables (products, users, transactions, notifications)
-- [x] Search + debounce (300 ms) on all listing pages
-- [x] Loading state on every async fetch (no blank screens)
-- [ ] **TODO:** Mobile responsive sidebar (hamburger menu < 768px)
-- [ ] **TODO:** Loading skeleton components on initial fetch
+| Variable | Description |
+|------|-------------|
+| VITE_API_URL | Backend API URL |
+| VITE_WS_URL | WebSocket URL |
 
 ---
 
-## 🔧 Environment Variables Reference
+# 📌 Why This Project Stands Out
 
-### Backend (`backend/.env`)
+Unlike basic CRUD inventory systems, this project focuses on:
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `MONGODB_URL` | mongodb://... | MongoDB connection string |
-| `DATABASE_NAME` | erp_db | MongoDB database name |
-| `REDIS_URL` | redis://... | Redis connection string |
-| `SECRET_KEY` | — | JWT signing key (min 32 chars) |
-| `ALGORITHM` | HS256 | JWT algorithm |
-| `ACCESS_TOKEN_EXPIRE_MINUTES` | 30 | Access token TTL |
-| `REFRESH_TOKEN_EXPIRE_DAYS` | 7 | Refresh token TTL |
-| `SMTP_HOST` | smtp.gmail.com | Email server host |
-| `SMTP_USER` | — | Email sender address |
-| `SMTP_PASSWORD` | — | Email app password |
-| `EMAILS_ENABLED` | false | Enable email notifications |
-
-### Frontend (`frontend/.env`)
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `VITE_API_URL` | http://localhost:8000 | Backend base URL |
-| `VITE_WS_URL` | ws://localhost:8000 | WebSocket base URL |
-| `VITE_APP_NAME` | Smart Inventory ERP | Application title |
+- Real-time communication
+- Scalable async backend architecture
+- Enterprise-grade authentication
+- Background task automation
+- Production deployment practices
+- Clean modular architecture
+- Redis session management
+- Dockerized infrastructure
 
 ---
 
-## 📄 License
+# 🚀 Future Improvements
 
-MIT — see `LICENSE` for details.  
+- Multi-tenant warehouse support
+- AI-based demand forecasting
+- SMS & Email alert integration
+- Kubernetes deployment
+- CI/CD pipeline integration
+- Cloud deployment support
 
+---
 
+# 🤝 Contributing
 
-Made with ❤️ by Aditya Tiwari | github.com/Aditya-9753 
+```bash
+git checkout -b feature/new-feature
+git commit -m "feat: add new feature"
+git push origin feature/new-feature
+```
 
+Open a Pull Request 🚀
+
+---
+
+# 📄 License
+
+Distributed under the MIT License.
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Aditya Tiwari**
+
+GitHub: https://github.com/Aditya-9753
+
+</div>

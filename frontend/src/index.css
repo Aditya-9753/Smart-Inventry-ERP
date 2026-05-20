@@ -3,14 +3,13 @@
  * Imports all modular stylesheets in proper order
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "./styles/globals.css";
+@import "./styles/dashboard.css";
+@import "./styles/inventory.css";
+@import "tailwindcss/utilities";
 
-/* Modular Styles */
-@import './styles/globals.css';
-@import './styles/dashboard.css';
-@import './styles/inventory.css';
 
 /* Custom Utilities */
 @layer utilities {
@@ -23,7 +22,9 @@
   }
 
   .app-sticky {
-    @apply sticky top-0 z-50;
+    position: sticky;
+    top: 0;
+    z-index: 50;
   }
 
   .center-flex {
